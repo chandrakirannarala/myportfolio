@@ -101,10 +101,10 @@
                   </p>
                   <p class="mb-4"><strong>How It Works:</strong></p>
                   <ul>
-                    <li><strong>Real-Time Parsing with an FSM:</strong> The FIX message is processed in hardware, detecting <code>tag=value</code> pairs efficiently using an FSM-driven delimiter-based parser.</li>
-                    <li><strong>Precompiled FIX Specification Mapping:</strong> Instead of XML-based lookups (common in software implementations), a fixed lookup table stored in FPGA block RAM (BRAM/ROM) maps tags to their human-readable names and categories.</li>
-                    <li><strong>On-the-Fly Validation:</strong> The hardware checks for required fields, message integrity (checksum validation), and body length accuracy as the message streams in, ensuring compliance with FIX protocol standards.</li>
-                    <li><strong>Ultra-Fast Output Generation:</strong> Parsed fields are categorized (Header, Body, Trailer) and prepared for real-time display or further processing with minimal latency overhead.</li>
+                    <p><strong>Real-Time Parsing with an FSM:</strong> The FIX message is processed in hardware, detecting <code>tag=value</code> pairs efficiently using an FSM-driven delimiter-based parser.</p>
+                    <p><strong>Precompiled FIX Specification Mapping:</strong> Instead of XML-based lookups (common in software implementations), a fixed lookup table stored in FPGA block RAM (BRAM/ROM) maps tags to their human-readable names and categories.</p>
+                    <p><strong>On-the-Fly Validation:</strong> The hardware checks for required fields, message integrity (checksum validation), and body length accuracy as the message streams in, ensuring compliance with FIX protocol standards.</p>
+                    <p><strong>Ultra-Fast Output Generation:</strong> Parsed fields are categorized (Header, Body, Trailer) and prepared for real-time display or further processing with minimal latency overhead.</p>
                   </ul>
                 </div>
                 <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero" href="https://github.com/chandrakirannarala/fpga_accelerate_FIX">Source Code</a>
