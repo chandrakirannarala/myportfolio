@@ -86,6 +86,49 @@
         <div class="project-wrapper">
           <h2 class="section-title dark-blue-text">Projects</h2>
 
+          <!-- Project E -->
+          <div class="row">
+            <div class="col-lg-4 col-sm-12">
+              <div class="project-wrapper__text load-hidden">
+                <h3 class="project-wrapper__text-title">Ultra-Low Latency FPGA-Based FIX Parser for Financial Market Data</h3>
+                <div>
+                  <p class="mb-4">
+                    In the world of high-frequency trading (HFT) and financial market data processing, every nanosecond counts. 
+                    Traditional software-based FIX (Financial Information Exchange) parsers, while flexible, introduce latency due 
+                    to memory access and dynamic processing overhead. My goal is to develop an ultra-low latency FIX parser on an FPGA, 
+                    leveraging parallelism, pipelining, and hardware-optimized state machines to achieve deterministic and near-instantaneous 
+                    message parsing.
+                  </p>
+                  <p class="mb-4"><strong>How It Works:</strong></p>
+                  <ul>
+                    <li><strong>Real-Time Parsing with an FSM:</strong> The FIX message is processed in hardware, detecting <code>tag=value</code> pairs efficiently using an FSM-driven delimiter-based parser.</li>
+                    <li><strong>Precompiled FIX Specification Mapping:</strong> Instead of XML-based lookups (common in software implementations), a fixed lookup table stored in FPGA block RAM (BRAM/ROM) maps tags to their human-readable names and categories.</li>
+                    <li><strong>On-the-Fly Validation:</strong> The hardware checks for required fields, message integrity (checksum validation), and body length accuracy as the message streams in, ensuring compliance with FIX protocol standards.</li>
+                    <li><strong>Ultra-Fast Output Generation:</strong> Parsed fields are categorized (Header, Body, Trailer) and prepared for real-time display or further processing with minimal latency overhead.</li>
+                  </ul>
+                </div>
+                <a rel="noreferrer" target="_blank" class="cta-btn cta-btn--hero" href="https://github.com/chandrakirannarala/fpga_accelerate_FIX">Source Code</a>
+                <!-- <a rel="noreferrer" target="_blank" class="cta-btn text-color-main" href="https://github.com/chandrakirannarala/EL6463-Team-Project">Source Code</a> -->
+              </div>
+            </div>
+            <div class="col-lg-8 col-sm-12">
+              <div class="project-wrapper__image load-hidden">
+                <a rel="noreferrer" href="#!" target="_blank">
+                  <div
+                    data-tilt
+                    data-tilt-max="4"
+                    data-tilt-glare="true"
+                    data-tilt-max-glare="0.5"
+                    class="thumbnail rounded js-tilt"
+                  >
+                    <img alt="RISC-V Project Image" class="img-fluid" src="assets/FIXparser_project.png" />
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /END Project E -->
+
           <!-- Project 0 -->
           <div class="row">
             <div class="col-lg-4 col-sm-12">
