@@ -73,4 +73,14 @@
     line-height: 1.5;
     margin-bottom: 10px;
   }
+  /* For fade-in animation (CSS-only option) */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
   
+  [data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
