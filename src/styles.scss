@@ -16,3 +16,61 @@
 @import "./sass/sections/contact";
 @import "./sass/sections/hero";
 @import "./sass/sections/projects";
+
+/* Resume section general styles */
+.resume {
+    padding: 60px 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+  
+  .resume .section-title h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 600;
+  }
+  
+  .resume .resume-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .resume .resume-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: 8px;
+  }
+  
+  .resume .resume-item h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .resume .resume-item h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .resume .resume-item h5 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #999;
+  }
+  
+  .resume .resume-item ul {
+    padding-left: 20px;
+  }
+  
+  .resume .resume-item ul li {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
