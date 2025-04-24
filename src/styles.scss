@@ -18,14 +18,26 @@
 @import "./sass/sections/projects";
 
 /* Resume section general styles */
-  /* Toggle/Dropdown CSS */
+   /* Base font for Journey section to match About Me */
+   #resume, #resume * {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+
   /* Section Title */
   .section-title h2 {
     text-align: center;
-    font-size: 2.2em;
-    font-weight: 600;
+    font-size: 3em;            /* Larger, bold heading */
+    font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+  }
+
+  .resume-title {
+    text-align: center;
+    font-size: 1.5em;          /* Bigger subheadings */
+    font-weight: 600;
+    margin-bottom: 40px;
   }
 
   /* Row layout with gap between columns */
@@ -33,8 +45,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 60px;
+    gap: 100px;                /* Wider gap between Experience & Education */
+    margin-bottom: 80px;
   }
+
   .col-lg-6 {
     flex: 1;
   }
@@ -42,7 +56,7 @@
   /* Experience Tiles */
   .experience-tile {
     background-color: #fff;
-    padding: 15px;
+    padding: 20px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -53,37 +67,41 @@
   .experience-tile:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
+
   .experience-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .experience-tile h4 {
-    font-size: 1.1em;
+    font-size: 1.2em;          /* Increase title size */
     margin: 0;
     font-weight: 500;
   }
+
   .duration {
-    font-size: 0.9em;
+    font-size: 1em;
     color: #666;
     margin: 0;
   }
+
   .experience-description {
     background-color: #f4f4f4;
-    padding: 10px;
-    border-left: 3px solid #0056b3;
+    padding: 15px;
+    border-left: 4px solid #0056b3;
     display: none;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     text-align: justify;
     text-justify: inter-word;
-    font-size: 0.95em;
-    line-height: 1.5;
+    font-size: 1em;
+    line-height: 1.6;
   }
 
   /* Education Cards */
   .education-section .resume-item {
     background-color: #fff;
-    padding: 15px;
+    padding: 20px;
     margin-bottom: 25px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -91,8 +109,8 @@
     text-align: center;
   }
   .education-section .resume-item h4 {
-    font-size: 1.1em;
-    margin-bottom: 5px;
+    font-size: 1.2em;
+    margin-bottom: 8px;
     font-weight: 500;
   }
   .education-section .resume-item h3 {
@@ -101,8 +119,8 @@
     color: #555;
   }
   .education-section .resume-item h5 {
-    font-size: 0.9em;
-    margin-top: 8px;
+    font-size: 0.95em;
+    margin-top: 10px;
     color: #888;
   }
 
