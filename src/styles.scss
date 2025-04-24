@@ -23,16 +23,16 @@
     color: #333;
   }
 
-  /* Section Title */
-  .section-title h2 {
+  /* Section Title (My Journey) - match global section-title size */
+  #resume .section-title h2 {
     text-align: center;
-    font-size: 3em;
+    font-size: 2.5rem;       /* Same size as About/Projects */
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 60px;
   }
 
-  /* Subheading (Experience/Education) */
+  /* Subheadings (Experience/Education) */
   .resume-title {
     text-align: center;
     font-size: 1.6em;
@@ -40,30 +40,34 @@
     margin-bottom: 30px;
   }
 
-  /* Container grid for two columns */
+  /* Two-column flex layout */
   .resume .container .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 100px;    /* Horizontal separation */
-    row-gap: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 100px;
     margin-bottom: 80px;
   }
 
   .col-lg-6 {
+    flex: 1;
     display: flex;
     flex-direction: column;
   }
 
-  /* Experience Tiles */
+  /* Experience Tiles: equal height */
   .experience-tile {
+    display: flex;
+    align-items: center;
     background-color: #fff;
     padding: 20px;
-    margin-bottom: 40px;    /* Uniform spacing */
+    margin-bottom: 40px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    min-height: 100px;
   }
   .experience-tile:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -73,10 +77,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
   .experience-tile h4 {
-    font-size: 1.25em;      /* Increase title size */
+    font-size: 1.3em;        /* Slightly larger for readability */
     margin: 0;
     font-weight: 500;
   }
@@ -92,29 +97,28 @@
     padding: 20px;
     border-left: 4px solid #0056b3;
     display: none;
-    margin-bottom: 40px;    /* Match tile spacing */
+    margin-bottom: 40px;
     text-align: justify;
-    text-justify: inter-word;
-    font-size: 1.1em;       /* Bump description size */
+    font-size: 1.15em;      /* Bumped for legibility */
     line-height: 1.6;
   }
-
   .experience-description ul li {
     margin-bottom: 0.8em;
   }
 
-  /* Education Cards */
+  /* Education Cards: fixed height & center content */
   .education-section .resume-item {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 40px;    /* Same spacing as experience */
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    min-height: 100px;
+    text-align: center;
   }
   .education-section .resume-item h4 {
     font-size: 1.25em;
@@ -126,7 +130,8 @@
     margin: 0;
     color: #555;
   }
-  .education-section .resume-item h5 {
+  .education-section .resume-item h5,
+  .education-section .resume-item .duration {
     font-size: 1em;
     margin-top: 10px;
     color: #888;
