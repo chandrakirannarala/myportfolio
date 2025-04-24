@@ -96,7 +96,7 @@
     
             <div class="experience-tile" onclick="toggleDescription('exp1')">
               <div class="experience-header">
-                <h4>Research Assistant | High-Density Memory Design in 7nm FinFET</h4>
+                <h4>Research Assistant | High-Density Memory Design and Optimization in 7nm FinFET Technology</h4>
                 <p class="duration">Jan 2024 - Present</p>
               </div>
             </div>
@@ -111,7 +111,7 @@
     
             <div class="experience-tile" onclick="toggleDescription('exp2')">
               <div class="experience-header">
-                <h4>Programmer Analyst</h4>
+                <h4>Programmer Analyst | Network Optimization and Automation</h4>
                 <p class="duration">Nov 2020 - Dec 2021</p>
               </div>
             </div>
@@ -142,10 +142,12 @@
       </div>
     
       <script>
-        function toggleDescription(id) {
-          var el = document.getElementById(id);
-          el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+          window.toggleDescription = function(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+          };
+        });
       </script>
     </section>
     <!-- /END Resume Section -->    
