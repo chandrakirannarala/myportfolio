@@ -18,69 +18,51 @@
 @import "./sass/sections/projects";
 
 /* Resume section general styles */
-.resume {
-    padding: 60px 0;
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-  }
-  
-  .resume .section-title h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-weight: 600;
-  }
-  
-  .resume .resume-title {
-    font-size: 24px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .resume .resume-item {
-    margin-bottom: 30px;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-radius: 8px;
-  }
-  
-  .resume .resume-item h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 5px;
-  }
-  
-  .resume .resume-item h3 {
-    font-size: 16px;
-    font-weight: 400;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .resume .resume-item h5 {
-    font-size: 14px;
-    font-weight: 400;
-    color: #999;
-  }
-  
-  .resume .resume-item ul {
-    padding-left: 20px;
-  }
-  
-  .resume .resume-item ul li {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  /* For fade-in animation (CSS-only option) */
+  /* Toggle/Dropdown CSS */
+.experience-tile {
+background-color: #fff;
+padding: 15px;
+margin-bottom: 15px;
+border: 1px solid #ddd;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.experience-tile:hover {
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.experience-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.duration {
+font-size: 0.9em;
+color: #666;
+}
+
+.experience-description {
+background-color: #f4f4f4;
+padding: 10px;
+border-left: 3px solid #0056b3;
+display: none;
+margin-bottom: 15px;
+text-align: justify;
+text-justify: inter-word;
+}
+
+/* AOS fade-in animation (if using AOS) */
 [data-aos] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-  }
-  
-  [data-aos].aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+[data-aos].aos-animate {
+opacity: 1;
+transform: translateY(0);
+}
