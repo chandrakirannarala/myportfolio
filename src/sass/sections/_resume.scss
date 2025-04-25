@@ -1,0 +1,95 @@
+#resume {
+    // --- Heading sizes matching Projects/About ---
+    .section-title h2 {
+      font-size: 4rem;        // same as mid-font-size in Projects
+      font-weight: 700;
+      margin-bottom: 5rem;
+    }
+    .resume-title {
+      font-size: 2.4rem;      // same as project titles
+      font-weight: 600;
+      margin-bottom: 4rem;
+    }
+  
+    // --- Two-column flex grid, scoped to #resume only ---
+    .container {
+      > .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8rem;            // matches .project-wrapper .row margin
+        margin-bottom: 8rem;  // matches Projects spacing
+  
+        @include respond(tab-land) {
+          gap: 4rem;
+          margin-bottom: 4rem;
+        }
+      }
+    }
+    .col-lg-6 {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    // --- Card styles, unified for exp & edu ---
+    .experience-tile,
+    .education-section .resume-item {
+      background: #fff;
+      padding: 2rem;
+      margin-bottom: 5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 0 6px rgba(0,0,0,0.05);
+      min-height: 12rem;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 6px 10px rgba(0,0,0,0.1), 0 0 6px rgba(0,0,0,0.03);
+      }
+    }
+  
+    // --- Experience header (title + date + company) ---
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .role-info {
+      display: flex;
+      flex-direction: column;
+  
+      h4 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin: 0 0 0.5rem 0;
+      }
+      .company {
+        font-size: 1.4rem;
+        color: $dark-grey;
+        margin: 0;
+      }
+    }
+    .duration {
+      font-size: 1.2rem;
+      color: $grey-text;
+      margin: 0;
+      text-align: right;
+      min-width: 12rem;
+    }
+  
+    // --- Expanded description styling ---
+    .experience-description {
+      background: $light-grey;
+      padding: 2rem;
+      border-left: 0.4rem solid $primary-color;
+      font-size: 1.6rem;    // matches project body text
+      line-height: 1.6;
+      margin-bottom: 5rem;
+      display: none;
+    }
+  }
+  
