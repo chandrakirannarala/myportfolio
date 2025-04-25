@@ -1,3 +1,6 @@
+$light-grey: #f7f7f7 !default;
+$primary-color: #3498db !default;
+
 #resume {
     // --- Heading sizes matching Projects/About ---
     .section-title h2 {
@@ -75,7 +78,7 @@
     }
     .duration {
       font-size: 1.2rem;
-      color: $grey-text;
+      color: #333333;
       margin: 0;
       text-align: right;
       min-width: 12rem;
@@ -83,9 +86,9 @@
   
     // --- Expanded description styling ---
     .experience-description {
-      background: $light-grey;
+      background: #f7f7f7;
       padding: 2rem;
-      border-left: 0.4rem solid $primary-color;
+      border-left: 0.4rem solid #3498db ;
       font-size: 1.6rem;    // matches project body text
       line-height: 1.6;
       margin-bottom: 5rem;
