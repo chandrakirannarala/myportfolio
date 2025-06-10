@@ -2,47 +2,36 @@
   --pointer-x: 50%;
   --pointer-y: 50%;
   --pointer-from-center: 0;
-  --pointer-from-left: 50%;
-  --pointer-from-top: 50%;
   --card-opacity: 0;
   --rotate-x: 0deg;
   --rotate-y: 0deg;
   --background-x: 50%;
   --background-y: 50%;
+  --pointer-from-left: 0;
+  --pointer-from-top: 0;
   
-  // Add missing color variables
-  --sunpillar-clr-1: hsl(258, 100%, 85%);
-  --sunpillar-clr-2: hsl(268, 100%, 80%);
-  --sunpillar-clr-3: hsl(278, 100%, 75%);
-  --sunpillar-clr-4: hsl(288, 100%, 70%);
-  --sunpillar-clr-5: hsl(298, 100%, 65%);
-  --sunpillar-clr-6: hsl(308, 100%, 60%);
+  // Add missing color variables for sunpillar gradient
+  --sunpillar-clr-1: #ff006e;
+  --sunpillar-clr-2: #8338ec;
+  --sunpillar-clr-3: #3a86ff;
+  --sunpillar-clr-4: #06ffa5;
+  --sunpillar-clr-5: #ffbe0b;
+  --sunpillar-clr-6: #fb5607;
   
-  // Add grain texture
-  --grain: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.15"/></svg>');
+  // Alternative color variables
+  --sunpillar-1: #ff006e;
+  --sunpillar-2: #8338ec;
+  --sunpillar-3: #3a86ff;
+  --sunpillar-4: #06ffa5;
+  --sunpillar-5: #ffbe0b;
+  --sunpillar-6: #fb5607;
   
-  // Add icon mask (replace with your actual icon path)
-  --icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>');
+  // Grain texture (you'll need to add a noise texture image)
+  --grain: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence type="turbulence" baseFrequency="0.9" numOctaves="1" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.3"/></svg>');
   
   --behind-gradient: radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), hsla(266, 100%, 90%, var(--card-opacity)) 4%, hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%, hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%, hsla(266, 0%, 60%, 0) 100%), radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%), radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%), conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
   --inner-gradient: linear-gradient(145deg, #60496e8c 0%, #71c4ff44 100%);
   --card-radius: 24px;
-}
-
-// Add missing animation keyframes
-@keyframes holo-bg {
-  0%, 100% { 
-    background-position: 0% 50%, 50% 50%, center; 
-  }
-  25% { 
-    background-position: 100% 50%, 25% 25%, center; 
-  }
-  50% { 
-    background-position: 200% 50%, 75% 75%, center; 
-  }
-  75% { 
-    background-position: 300% 50%, 25% 75%, center; 
-  }
 }
 
 .pc-card-wrapper {
@@ -52,6 +41,10 @@
   touch-action: none;
   max-width: 320px;
   margin: 0 auto;
+  
+  // Ensure proper sizing
+  width: 100%;
+  min-height: 400px; // Add minimum height
 }
 
 .pc-card-wrapper::before {
@@ -89,6 +82,9 @@
   transform: rotateX(0deg) rotateY(0deg);
   overflow: hidden;
   transform-style: preserve-3d;
+  
+  // Ensure minimum dimensions
+  min-height: 400px;
 }
 
 .pc-card:hover,
@@ -115,7 +111,6 @@
 .pc-shine {
   --space: 5%;
   --angle: -45deg;
-  mask-image: var(--icon);
   mask-mode: luminance;
   mask-repeat: repeat;
   mask-size: 150%;
@@ -158,12 +153,11 @@
 }
 
 .pc-shine::before {
-  background-image: linear-gradient(45deg, var(--sunpillar-clr-4), var(--sunpillar-clr-5), var(--sunpillar-clr-6), var(--sunpillar-clr-1), var(--sunpillar-clr-2), var(--sunpillar-clr-3)), radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%), var(--grain);
+  background-image: linear-gradient(45deg, var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6), var(--sunpillar-1), var(--sunpillar-2), var(--sunpillar-3)), radial-gradient(circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 70%) 0%, hsla(0, 0%, 30%, 0.2) 90%), var(--grain);
   background-size: 250% 250%, 100% 100%, 220px 220px;
   background-position: var(--pointer-x) var(--pointer-y), center, calc(var(--pointer-x) * 0.01) calc(var(--pointer-y) * 0.01);
   background-blend-mode: color-dodge;
-  // FIXED: Escape calc() functions to prevent SASS from processing them
-  filter: #{"brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2)) saturate(calc(0.5 + var(--pointer-from-center)))"};
+  filter: unquote("brightness(calc(2 - var(--pointer-from-center))) contrast(calc(var(--pointer-from-center) + 2)) saturate(calc(0.5 + var(--pointer-from-center)))");
   mix-blend-mode: luminosity;
 }
 
@@ -183,18 +177,40 @@
   z-index: 4;
 }
 
+// FIXED: Avatar content container
 .pc-avatar-content {
   mix-blend-mode: screen;
   overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: flex-end; // Align avatar to bottom
+  justify-content: center;
 }
 
+// FIXED: Avatar sizing and positioning
 .pc-avatar-content .avatar {
-  width: 100%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) scale(1.05);
-  bottom: 0;
-  opacity: calc(1.5 - var(--pointer-from-center));
+  width: 85%; // Reduced from 100% to prevent overflow
+  max-width: 280px; // Add maximum width constraint
+  height: auto; // Maintain aspect ratio
+  position: relative; // Changed from absolute
+  left: auto; // Remove left positioning
+  transform: none; // Remove transform that was causing issues
+  bottom: auto; // Remove bottom positioning
+  opacity: calc(1.2 - var(--pointer-from-center)); // Adjusted opacity calculation
+  object-fit: cover; // Ensure proper image fitting
+  border-radius: 12px; // Add slight border radius to match card style
+  
+  // Add responsive sizing
+  @media (max-width: 768px) {
+    width: 80%;
+    max-width: 250px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 75%;
+    max-width: 200px;
+  }
 }
 
 .pc-content {
@@ -202,7 +218,7 @@
   overflow: hidden;
   text-align: center;
   position: relative;
-  transform: translate3d(calc(var(--pointer-from-left) * -4px + 2px), calc(var(--pointer-from-top) * -4px + 2px), 0.2px) !important;
+  transform: translate3d(calc(var(--pointer-from-left, 0) * -4px + 2px), calc(var(--pointer-from-top, 0) * -4px + 2px), 0.2px) !important;
   z-index: 5;
   mix-blend-mode: luminosity;
   color: #fff;
@@ -215,6 +231,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.2em;
+  padding: 0 1rem; // Add horizontal padding
 }
 
 .pc-details h3 {
@@ -235,4 +252,37 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+// Add keyframe animation for the holo effect
+@keyframes holo-bg {
+  0% { 
+    background-position: 0% 50%, 0% 50%, 0% 50%;
+  }
+  100% { 
+    background-position: 100% 50%, 100% 50%, 100% 50%;
+  }
+}
+
+// Add media queries for better responsiveness
+@media (max-width: 768px) {
+  .pc-card-wrapper {
+    max-width: 280px;
+    min-height: 350px;
+  }
+  
+  .pc-card {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pc-card-wrapper {
+    max-width: 240px;
+    min-height: 300px;
+  }
+  
+  .pc-card {
+    min-height: 300px;
+  }
 }
