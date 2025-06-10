@@ -1,9 +1,11 @@
 import initScrollReveal from "./scripts/scrollReveal";
 import initTiltEffect from "./scripts/tiltAnimation";
 import { targetElements, defaultProps } from "./data/scrollRevealConfig";
+import initProfileCard from "./scripts/profileCard";
 
 initScrollReveal(targetElements, defaultProps);
 initTiltEffect();
+initProfileCard(); 
 
 // Night Mode Toggle
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
