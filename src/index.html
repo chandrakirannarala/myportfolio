@@ -34,31 +34,31 @@
 <!-- **** Hero Section **** -->
 <section id="hero" class="jumbotron">
   <div class="container">
-    <h1 class="hero-title load-hidden">
-      <!-- First line -->
-      <span
-        class="decrypted-text"
-        data-text="Hello! I'm Chandra Kiran Narala."
-      >
-        Hello! I'm Chandra Kiran Narala.
-      </span>
-      <br />
-      <!-- Second line -->
-      <span
-        class="decrypted-text"
-        data-text="I architect and build efficient hardware systems."
-      >
-        I design and build low-latency hardware systems.
-      </span>
-      <br />
-      <!-- Third line -->
-      <span
-        class="decrypted-text"
-        data-text="Specializing in FPGA, ASIC, and digital logic design."
-      >
-        Specializing in FPGA, ASIC, and Hardware design.
-      </span>
-    </h1>
+    <!-- This container will hold the interactive text -->
+    <div id="variable-proximity-container" class="hero-title load-hidden">
+        <!-- Each h1 tag will become a line of interactive text -->
+        <h1
+          class="variable-proximity-text"
+          data-text="Hi, I'm [[Chandra Kiran Narala]]."
+          data-from-settings="'wght' 700, 'opsz' 12"
+          data-to-settings="'wght' 1000, 'opsz' 40"
+          data-radius="120"
+        ></h1>
+        <h1
+          class="variable-proximity-text"
+          data-text="I am an FPGA/ASIC Hardware Design Engineer."
+          data-from-settings="'wght' 600, 'opsz' 12"
+          data-to-settings="'wght' 900, 'opsz' 30"
+          data-radius="100"
+        ></h1>
+        <h1
+          class="variable-proximity-text"
+          data-text="I build high-performance, low-latency solutions."
+          data-from-settings="'wght' 600, 'opsz' 12"
+          data-to-settings="'wght' 800, 'opsz' 20"
+          data-radius="80"
+        ></h1>
+    </div>
     <p class="hero-cta load-hidden">
       <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about">Know more</a>
     </p>

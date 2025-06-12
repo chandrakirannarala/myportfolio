@@ -2,11 +2,13 @@ import initScrollReveal from "./scripts/scrollReveal";
 import initTiltEffect from "./scripts/tiltAnimation";
 import { targetElements, defaultProps } from "./data/scrollRevealConfig";
 import initProfileCard from "./scripts/profileCard";
-import initDecryptedText from "./scripts/decryptedText";
+import initDecryptedText from "./scripts/variableProximity";
+import initVariableProximity from "./scripts/variableProximity";
 
 initScrollReveal(targetElements, defaultProps);
 initTiltEffect();
-initProfileCard(); 
+initProfileCard();
+initVariableProximity(); 
 
 // Initialize the Decrypted Text Effect
 document.addEventListener('DOMContentLoaded', () => {

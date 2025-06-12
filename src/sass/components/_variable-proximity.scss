@@ -1,0 +1,32 @@
+/* Import the required variable font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+
+/* Apply the font to our hero title container */
+#variable-proximity-container {
+  font-family: "Roboto Flex", sans-serif;
+  line-height: 1.2; // Adjust line height for multi-line layout
+}
+
+/* Base style for the text elements */
+.variable-proximity-text {
+  display: block; // Each h1 is its own block
+  text-align: left;
+  // Ensure smooth transitions for the font variations
+  transition: font-variation-settings 0.1s ease-out;
+}
+
+/* Visually hide elements meant only for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.name-highlight {
+  color: #02aab0;
+}
