@@ -2,10 +2,17 @@ import initScrollReveal from "./scripts/scrollReveal";
 import initTiltEffect from "./scripts/tiltAnimation";
 import { targetElements, defaultProps } from "./data/scrollRevealConfig";
 import initProfileCard from "./scripts/profileCard";
+import initDecryptedText from "./scripts/decryptedText";
 
 initScrollReveal(targetElements, defaultProps);
 initTiltEffect();
 initProfileCard(); 
+
+// Initialize the Decrypted Text Effect
+document.addEventListener('DOMContentLoaded', () => {
+    const decryptedElements = document.querySelectorAll('.decrypted-text');
+    decryptedElements.forEach(initDecryptedText);
+  });
 
 // Night Mode Toggle
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');

@@ -29,22 +29,27 @@
   }
 
   .hero-title {
-    font-size: 5.6rem;
+    // --- This is the font size for large screens (desktops) ---
+    font-size: 4.6rem; 
     font-weight: 700;
     margin-bottom: 3.2rem;
     text-align: left;
-
+  
+    // --- Styles for tablets in landscape mode ---
     @include respond(tab-land) {
-      font-size: 4rem;
+      font-size: 4em;
     }
+    // --- Styles for tablets in portrait mode ---
     @include respond(tab-port) {
       font-size: 3.6rem;
       text-align: center;
     }
+    // --- Styles for phones ---
     @include respond(phone) {
       font-size: 3.5rem;
       line-height: 1.5;
     }
+    // --- Styles for extra-small phones ---
     @include respond(phone-xs) {
       font-size: 2.8rem;
     }
