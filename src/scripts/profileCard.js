@@ -28,9 +28,9 @@ export default function initProfileCard() {
         const percentY = clamp((100 / height) * offsetY);
         const centerX = percentX - 50;
         const centerY = percentY - 50;
-        const distance = Math.hypot(centerX, centerY);
         
-        // Calculate additional properties for better animation
+        // Calculate distance from center for opacity effects
+        const distance = Math.hypot(centerX, centerY);
         const fromCenter = clamp(distance / 50, 0, 1);
         const fromLeft = clamp(percentX / 100, 0, 1);
         const fromTop = clamp(percentY / 100, 0, 1);
@@ -43,8 +43,8 @@ export default function initProfileCard() {
             "--pointer-from-center": `${fromCenter}`,
             "--pointer-from-left": `${fromLeft}`,
             "--pointer-from-top": `${fromTop}`,
-            "--rotate-x": `${round(-(centerY / 4))}deg`,
-            "--rotate-y": `${round(centerX / 5)}deg`,
+            "--rotate-x": `${round(-(centerX / 5))}deg`,
+            "--rotate-y": `${round(centerY / 4)}deg`,
         };
 
         Object.entries(properties).forEach(([property, value]) => {
@@ -81,7 +81,7 @@ export default function initProfileCard() {
         }
     };
 
-    // Event listeners with improved handling
+    // Event handlers
     const handlePointerEnter = () => {
         cancelAnimation();
         wrap.classList.add("active");
@@ -108,34 +108,51 @@ export default function initProfileCard() {
         card.classList.remove("active");
     };
 
-    // Add event listeners
+    // Add modern pointer events
     card.addEventListener("pointerenter", handlePointerEnter);
     card.addEventListener("pointermove", handlePointerMove);
     card.addEventListener("pointerleave", handlePointerLeave);
 
-    // Fallback for older browsers or touch devices
+    // Fallback for older browsers
     card.addEventListener("mouseenter", handlePointerEnter);
-    card.addEventListener("mousemove", (event) => {
-        handlePointerMove(event);
-    });
+    card.addEventListener("mousemove", handlePointerMove);
     card.addEventListener("mouseleave", handlePointerLeave);
 
     // Touch support
+    let touchStarted = false;
+    
     card.addEventListener("touchstart", (event) => {
         event.preventDefault();
+        touchStarted = true;
         handlePointerEnter();
+        
+        const touch = event.touches[0];
+        if (touch) {
+            const rect = card.getBoundingClientRect();
+            const offsetX = touch.clientX - rect.left;
+            const offsetY = touch.clientY - rect.top;
+            updateCardTransform(offsetX, offsetY);
+        }
     });
 
     card.addEventListener("touchmove", (event) => {
+        if (!touchStarted) return;
         event.preventDefault();
+        
         const touch = event.touches[0];
         if (touch) {
-            handlePointerMove(touch);
+            const rect = card.getBoundingClientRect();
+            const offsetX = touch.clientX - rect.left;
+            const offsetY = touch.clientY - rect.top;
+            updateCardTransform(offsetX, offsetY);
         }
     });
 
     card.addEventListener("touchend", (event) => {
+        if (!touchStarted) return;
         event.preventDefault();
+        touchStarted = false;
+        
         const rect = card.getBoundingClientRect();
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
@@ -145,11 +162,10 @@ export default function initProfileCard() {
         card.classList.remove("active");
     });
 
-    // Initial animation with better positioning
+    // Initialize card position
     const initializeCard = () => {
         const rect = wrap.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) {
-            // If dimensions aren't available yet, try again
             setTimeout(initializeCard, 100);
             return;
         }
@@ -158,12 +174,14 @@ export default function initProfileCard() {
         const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
         
         updateCardTransform(initialX, initialY);
+        
+        // Start initial animation after a short delay
         setTimeout(() => {
             createSmoothAnimation(ANIMATION_CONFIG.INITIAL_DURATION, initialX, initialY);
-        }, 100);
+        }, 200);
     };
 
-    // Initialize after DOM is ready
+    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializeCard);
     } else {
@@ -182,4 +200,18 @@ export default function initProfileCard() {
             updateCardTransform(centerX, centerY);
         }, 150);
     });
+
+    // Make contact button functional
+    const contactBtn = document.querySelector('.pc-contact-btn');
+    if (contactBtn) {
+        contactBtn.style.pointerEvents = 'auto';
+        contactBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            // Scroll to contact section
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 }
