@@ -5,6 +5,7 @@ import initProfileCard from "./scripts/profileCard";
 import initDecryptedText from "./scripts/variableProximity";
 import initVariableProximity from "./scripts/variableProximity";
 
+// Initialize all components
 initScrollReveal(targetElements, defaultProps);
 initTiltEffect();
 initProfileCard();
@@ -14,32 +15,82 @@ initVariableProximity();
 document.addEventListener('DOMContentLoaded', () => {
     const decryptedElements = document.querySelectorAll('.decrypted-text');
     decryptedElements.forEach(initDecryptedText);
-  });
+});
 
-// Night Mode Toggle
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        toggleSwitch.checked = true;
+// Enhanced Night Mode Toggle
+const initDarkMode = () => {
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    
+    if (!toggleSwitch) {
+        console.warn('Dark mode toggle not found');
+        return;
     }
-}
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        document.body.classList.add('dark-mode');
-    }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        document.body.classList.remove('dark-mode');
-    }
-}
+    // Function to apply dark mode
+    const applyDarkMode = (isDark) => {
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.body.classList.add('dark-mode');
+            toggleSwitch.checked = true;
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.body.classList.remove('dark-mode');
+            toggleSwitch.checked = false;
+        }
+    };
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+    // Get saved theme preference or default to system preference
+    const getSavedTheme = () => {
+        const saved = localStorage.getItem('theme');
+        
+        // If no saved preference, check system preference
+        if (!saved) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        }
+        
+        return saved;
+    };
+
+    // Initialize theme immediately to prevent flash
+    const currentTheme = getSavedTheme();
+    applyDarkMode(currentTheme === 'dark');
+
+    // Theme toggle function
+    const switchTheme = (e) => {
+        const isDark = e.target.checked;
+        const theme = isDark ? 'dark' : 'light';
+        
+        applyDarkMode(isDark);
+        localStorage.setItem('theme', theme);
+        
+        // Dispatch custom event for components that need to react to theme changes
+        window.dispatchEvent(new CustomEvent('themeChange', { 
+            detail: { theme, isDark } 
+        }));
+    };
+
+    // Listen for toggle changes
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Listen for system theme changes
+    if (window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener('change', (e) => {
+            // Only apply system theme if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                applyDarkMode(e.matches);
+            }
+        });
+    }
+};
+
+// Initialize dark mode immediately
+initDarkMode();
+
+// Also ensure it's applied when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initDarkMode();
+});
