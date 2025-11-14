@@ -4,12 +4,14 @@ import { targetElements, defaultProps } from "./data/scrollRevealConfig";
 import initProfileCard from "./scripts/profileCard";
 import initDecryptedText from "./scripts/variableProximity";
 import initVariableProximity from "./scripts/variableProximity";
+import initLetterGlitch from "./scripts/letterGlitch";
 
 // Initialize all components
 initScrollReveal(targetElements, defaultProps);
 initTiltEffect();
 initProfileCard();
 initVariableProximity(); 
+initLetterGlitch();
 
 // Initialize the Decrypted Text Effect
 document.addEventListener('DOMContentLoaded', () => {

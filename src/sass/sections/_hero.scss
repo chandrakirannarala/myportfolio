@@ -70,4 +70,21 @@
       }
     }
   }
+  overflow: hidden;
+
+  /* Letter glitch background canvas */
+  #letter-glitch-bg {
+    position: absolute;
+    inset: 0;           // top:0; right:0; bottom:0; left:0
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;         // behind text
+  }
+
+  /* Make sure hero content is on top of the canvas */
+  .container {
+    position: relative;
+    z-index: 1;
+  }
 }
