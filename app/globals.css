@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme CSS Variables ───────────────────────────────────────── */
+/* Default = dark */
+:root {
+  --color-base:    #111111;
+  --color-surface: #1a1a1a;
+  --color-pill:    #222222;
+  --color-text-primary: #ffffff;
+  --color-text-muted:   #a1a1aa;   /* zinc-400 */
+  --color-text-dim:     #71717a;   /* zinc-500 */
+  --color-text-dimmer:  #52525b;   /* zinc-600 */
+  --color-card-bg:      rgba(255, 255, 255, 0.02);
+  --color-card-border:  rgba(255, 255, 255, 0.08);
+  --color-divider:      rgba(255, 255, 255, 0.06);
+  --color-icon-border:  rgba(255, 255, 255, 0.15);
+  --color-date-badge-bg:     rgba(255, 255, 255, 0.04);
+  --color-date-badge-border: rgba(255, 255, 255, 0.10);
+  --color-scroll-thumb: rgba(255, 255, 255, 0.10);
+}
+
+/* Light mode — toggled by adding .light class to <html> */
+html.light {
+  --color-base:    #f4f4f5;   /* zinc-100 */
+  --color-surface: #ffffff;
+  --color-pill:    #e4e4e7;   /* zinc-200 */
+  --color-text-primary: #111111;
+  --color-text-muted:   #52525b;   /* zinc-600 */
+  --color-text-dim:     #71717a;   /* zinc-500 */
+  --color-text-dimmer:  #a1a1aa;   /* zinc-400 */
+  --color-card-bg:      rgba(0, 0, 0, 0.02);
+  --color-card-border:  rgba(0, 0, 0, 0.09);
+  --color-divider:      rgba(0, 0, 0, 0.08);
+  --color-icon-border:  rgba(0, 0, 0, 0.14);
+  --color-date-badge-bg:     rgba(0, 0, 0, 0.04);
+  --color-date-badge-border: rgba(0, 0, 0, 0.10);
+  --color-scroll-thumb: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Base Styles ───────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base antialiased;
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    @apply bg-white/20;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-scroll-thumb);
+    border-radius: 9999px;
+  }
+}
+
+@layer components {
+  .section-divider {
+    border-top: 1px solid var(--color-divider);
+  }
+}
+
+/* ── Light Mode Overrides (text & element colors) ──────────────── */
+
+/* Headings & primary text */
+html.light .text-white {
+  color: var(--color-text-primary) !important;
+}
+html.light .text-zinc-200 {
+  color: #27272a !important;
+}
+html.light .text-zinc-300 {
+  color: #3f3f46 !important;
+}
+html.light .text-zinc-400 {
+  color: var(--color-text-muted) !important;
+}
+html.light .text-zinc-500 {
+  color: var(--color-text-dim) !important;
+}
+html.light .text-zinc-600 {
+  color: var(--color-text-dimmer) !important;
+}
+
+/* Section borders */
+html.light section {
+  border-color: var(--color-divider) !important;
+}
+
+/* Experience / Education timeline dots */
+html.light .light-border {
+  border-color: var(--color-icon-border) !important;
+}
+
+/* Timeline connector lines */
+html.light .connector-line {
+  background-color: var(--color-divider) !important;
+}
+
+/* Date badges */
+html.light .date-badge {
+  border-color: var(--color-date-badge-border) !important;
+  background-color: var(--color-date-badge-bg) !important;
+}
+
+/* Project cards */
+html.light article.reveal {
+  background-color: var(--color-card-bg) !important;
+  border-color: var(--color-card-border) !important;
+}
+
+/* Skill pills */
+html.light span.rounded-lg,
+html.light span.rounded-md {
+  border-color: var(--color-card-border) !important;
+  background-color: var(--color-card-bg) !important;
+}
+
+/* Navbar */
+html.light header {
+  border-color: var(--color-divider) !important;
+}
+html.light header .bg-base\/90 {
+  background-color: rgba(244, 244, 245, 0.90) !important;
+}
+
+/* Contact "Say Hello" button stays white in dark, inverted in light */
+html.light a.rounded-full.bg-white {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+}
+html.light a.rounded-full.bg-white:hover {
+  background-color: #27272a !important;
+}
+
+/* Social icon circles in contact */
+html.light .flex.h-12.w-12.rounded-full {
+  border-color: var(--color-card-border) !important;
+}
+
+/* Mobile drawer */
+html.light .fixed.inset-0.bg-base\/95 {
+  background-color: rgba(244, 244, 245, 0.97) !important;
+}
+
+/* ── Reveal Animations ─────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
